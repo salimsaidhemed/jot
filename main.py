@@ -1,18 +1,26 @@
 
-from PyQt6.QtWidgets import QApplication,QLabel,QWidget,QVBoxLayout
+from PyQt6.QtWidgets import QApplication,QLabel,QWidget,QVBoxLayout,QMainWindow
 import platform
+import sys
 
-class App(QApplication):
-    pass
+class MainWindow(QMainWindow):
 
-def getStyle():
-    if platform.platform().startswith("macOS"):
-        return 'macos'
+    # def getStyle(self):
+    #     if platform.platform().startswith("macOS"):
+    #         return 'macos'
+    
+    def __init__(self):
+        super(MainWindow,self).__init__()
+        self.setGeometry(50,50,500,300)
+        self.setWindowTitle("Jot")
+        # self.setStyle(self.getStyle())
+        self.show()
 
-app = QApplication([])
-app.setStyle(getStyle())
-window = QWidget()
-v_layout = QVBoxLayout()
-label = QLabel('Hello World')
-label.show()
-app.exec()
+
+if __name__ == "__main__":
+    
+    app = QApplication([])
+    app.setStyle('macos')
+    MainWindow().show()
+    sys.exit(app.exec())
+    
